@@ -1,0 +1,15 @@
+{
+    "grass": {
+        "index": 0,
+        "solid": false,
+        "breakable": false
+    },
+    "water": {
+        "index": 1,
+        "solid": true,
+        "breakable": false,
+
+        "anim": true,
+        "anim-speed": 3
+    }
+}
