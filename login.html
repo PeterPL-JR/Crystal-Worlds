@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Worlds - Login</title>
+    <style>
+        @import url('styles/login_css.css');
+        @import url('styles/main.css');
+    </style>
+</head>
+<body>
+    
+    <div id="Main">
+
+        <img src="assets/gui/logo.png" alt="Crystal Worlds">
+        <br>
+        <img class="Company" src="assets/gui/company.png" alt="FireOwl Studios" onclick="window.open('https://fireowl-studios.000webhostapp.com');">
+        <hr>
+        <p>
+            Login:
+        </p>
+
+        <form>
+
+            <p>
+                Username:
+            </p>
+            <input id="Username" type="text">
+
+            <p>
+                Password:
+            </p>
+            <input id="Password" type="password"><br>
+            <img id="Eye" src="assets/gui/eye_closed.png" onclick="passSwitch();">
+        </form>
+
+    </div>
+        
+    <script>
+
+        var pass_state = false;
+
+        function passSwitch()
+        {
+            var password = document.getElementById('Password');
+            var image = document.getElementById('Eye');
+
+            if (!pass_state)
+            {
+                password.type = 'text';
+                image.src = 'assets/gui/eye_open.png';
+                pass_state = true;
+            }
+            else
+            {
+                password.type = 'password';
+                image.src = 'assets/gui/eye_closed.png';
+                pass_state = false;
+            }
+        }
+
+        function emptyFunction()
+        {
+            
+        }
+
+    </script>
+</body>
+</html>

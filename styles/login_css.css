@@ -1,0 +1,64 @@
+#Main
+{
+    border-radius: 120px;
+    margin: auto;
+    width: 800px;
+    background-color: rgb(99, 11, 24);
+}
+img
+{
+    margin: 30px 0 -30px 0;
+    width: 500px;
+}
+.Company
+{
+    margin-bottom:-20px;
+    width: 300px;
+    transition: 0.5s;
+}
+.Company:hover
+{
+    cursor: pointer;
+    width: 310px;
+    transition: 0.5s;
+}
+hr
+{
+    color: #FFBB47;
+    background-color: #FFBB47;
+    height: 2px;
+    width: 460px;
+    outline: solid 4px #330225;
+}
+form > p
+{
+    color: #FFBB47;
+    font-size: 30px;
+    margin-bottom: -30px;
+}
+input
+{
+    background-color: #210118;
+    border: none;
+    width: 420px;
+    height: 30px;
+    color: white;
+    font-family: main;
+}
+input:focus
+{
+    outline: solid #FFBB47 2px;
+    border: none;
+}
+#Eye
+{
+    margin-bottom: 20px;
+    width: 100px;
+    transition: 0.5s;
+}
+#Eye:hover
+{
+    transition: 0.5s;
+    width: 110px;
+    cursor: pointer;
+}
