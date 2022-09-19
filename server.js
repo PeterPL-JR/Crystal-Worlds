@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 1024;
 
 const maps = require("./server/maps");
 maps.loadTiles();
+maps.loadMaps();
 
 const _EMIT_GET_TILES = 0;
 
