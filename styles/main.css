@@ -17,3 +17,7 @@ body
     color: #FF0C69;
     text-shadow: 0 8px #330225, #330225 1px 0 10px, #330225 1px 0 10px;
 }
+*
+{
+    transition: 0.5s;
+}

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crystal Worlds - Login</title>
+    <title>Crystal Worlds - Register</title>
     <link href="assets/gui/icon.png" rel="icon">
     <style>
-        @import url('styles/login_css.css');
+        @import url('styles/register_css.css');
         @import url('styles/main.css');
     </style>
 </head>
@@ -23,6 +23,11 @@
         <form>
 
             <p>
+                Username:
+            </p>
+            <input id="Username" type="text">
+
+            <p>
                 Login:
             </p>
             <input id="Login" type="text">
@@ -33,11 +38,11 @@
             <input id="Password" type="password"><br>
             <img id="Eye" src="assets/gui/eye_open.png" onclick="passSwitch();">
 
-            <input id="Submit" type="submit" value="Log In">
+            <input id="Submit" type="submit" value="Create Account">
         </form>
 
         <p>
-            Don't have an account? Register <a href="register.html">HERE</a>!
+            Already have an account? Log In <a href="login.html">HERE</a>!
         </p><br>
 
     </div>

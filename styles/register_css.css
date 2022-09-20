@@ -70,7 +70,7 @@ input:focus
     outline: solid #210118 5px;
     background-color: #FF0C69;
     border: none;
-    width: 260px;
+    width: 320px;
     height: 80px;
     color: white;
     font-family: main;
@@ -80,7 +80,7 @@ input:focus
     color: #FFBB47;
     outline: solid #FFBB47 8px;
     background-color: #210118;
-    width: 270px;
+    width: 330px;
     height: 90px;
 }
 a
