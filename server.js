@@ -14,10 +14,13 @@ const maps = require("./server/maps");
 maps.loadTiles();
 maps.loadMaps();
 
-const _EMIT_GET_TILES = 0;
+const _EMIT_GET_WORLDS_DATA = 0;
 
 io.on("connection", function(socket) {
-    socket.emit(_EMIT_GET_TILES, maps.tilesData);
+    socket.emit(_EMIT_GET_WORLDS_DATA, {
+        tiles: maps.tilesData,
+        worlds: maps.worldsData
+    });
 });
 
 app.use(express.static(
