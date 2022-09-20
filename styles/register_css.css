@@ -39,14 +39,16 @@ form > p
 {
     color: #FFBB47;
     font-size: 30px;
-    margin-bottom: -30px;
+    margin-bottom: -5px;
 }
 input
 {
+    text-align:center;
+    font-size: 20px;
     background-color: #210118;
     border: none;
-    width: 420px;
-    height: 30px;
+    width: 320px;
+    height: 50px;
     color: white;
     font-family: main;
 }
@@ -61,7 +63,6 @@ input:focus
 }
 #Eye:hover
 {
-    width: 110px;
     cursor: pointer;
 }
 #Submit
@@ -80,8 +81,6 @@ input:focus
     color: #FFBB47;
     outline: solid #FFBB47 8px;
     background-color: #210118;
-    width: 330px;
-    height: 90px;
 }
 a
 {
