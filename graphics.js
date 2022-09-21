@@ -9,7 +9,12 @@ class ImgAsset {
         this.image = document.createElement("img");
         this.image.src = this.path;
     }
-    render(ctx, x, y) {
-        ctx.drawImage(this.image, x, y);
+    draw(ctx, x, y, width, height) {
+        if(!width || !height) {
+            width = this.image.width;
+            height = this.image.height;
+        }
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(this.image, x, y, width, height);
     }
 }
