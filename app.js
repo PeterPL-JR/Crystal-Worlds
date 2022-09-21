@@ -10,6 +10,9 @@ const TILE_SIZE = TILE_IMAGE_SIZE * 3;
 const WIDTH = SCREEN_MAP_WIDTH * TILE_SIZE;
 const HEIGHT = SCREEN_MAP_HEIGHT * TILE_SIZE;
 
+const X_OFFSET = WIDTH / 2 - PLAYER_SIZE / 2;
+const Y_OFFSET = HEIGHT / 2 - PLAYER_SIZE / 2;
+
 var mapWidth;
 var mapHeight;
 
@@ -31,6 +34,9 @@ const mapIndex = 0;
 function init() {
     canvas.width = WIDTH;
     canvas.height = HEIGHT;
+
+    keyboard();
+    mouse();
 
     var socket = io();
     socket.on(_EMIT_GET_TILES, function(data) {
@@ -60,6 +66,8 @@ function initImages() {
 
 function initMap(worldName, mapIndex) {
     displayedMap = worlds[worldName][mapIndex];
+    playerX = displayedMap.spawn[X] * TILE_SIZE;
+    playerY = displayedMap.spawn[Y] * TILE_SIZE;
 
     const tilesIndexes = displayedMap.data;
     mapWidth = tilesIndexes[0].length;
@@ -68,13 +76,15 @@ function initMap(worldName, mapIndex) {
     for(var y = 0; y < mapHeight; y++) {
         for(var x = 0; x < mapWidth; x++) {
             const type = tilesIndexes[y][x];
-            tiles.push({x, y, type})
+            tiles.push({x, y, type});
         }
     }
 }
 
 function draw() {
     requestAnimationFrame(draw);
+    playerMovement();
+
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
@@ -83,8 +93,8 @@ function draw() {
 
 function renderTiles() {
     for(var tile of tiles) {
-        const renderX = tile.x * TILE_SIZE;
-        const renderY = tile.y * TILE_SIZE;
+        const renderX = getX(tile.x * TILE_SIZE);
+        const renderY = getY(tile.y * TILE_SIZE);
         tilesArray[tile.type].image.draw(ctx, renderX, renderY, TILE_SIZE, TILE_SIZE);
     }
 }
