@@ -1,7 +1,8 @@
 var playerX;
 var playerY;
 
-const PLAYER_SIZE = 34;
+const PLAYER_IMAGE_SIZE = 34;
+const PLAYER_SIZE = PLAYER_IMAGE_SIZE * 2;
 const SPEED = 10;
 
 const X = 0;

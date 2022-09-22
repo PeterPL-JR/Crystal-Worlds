@@ -1,11 +1,11 @@
 const canvas = document.querySelector("#container canvas");
 const ctx = canvas.getContext("2d");
 
-const SCREEN_MAP_WIDTH = 12;
-const SCREEN_MAP_HEIGHT = 7;
+const SCREEN_MAP_WIDTH = 18;
+const SCREEN_MAP_HEIGHT = 10;
 
 const TILE_IMAGE_SIZE = 34;
-const TILE_SIZE = TILE_IMAGE_SIZE * 3;
+const TILE_SIZE = TILE_IMAGE_SIZE * 2;
 
 const WIDTH = SCREEN_MAP_WIDTH * TILE_SIZE;
 const HEIGHT = SCREEN_MAP_HEIGHT * TILE_SIZE;
@@ -66,8 +66,8 @@ function initImages() {
 
 function initMap(worldName, mapIndex) {
     displayedMap = worlds[worldName][mapIndex];
-    playerX = displayedMap.spawn[X] * TILE_SIZE;
-    playerY = displayedMap.spawn[Y] * TILE_SIZE;
+    playerX = displayedMap.spawn[X] * TILE_SIZE - PLAYER_SIZE / 2;
+    playerY = displayedMap.spawn[Y] * TILE_SIZE - PLAYER_SIZE / 2;
 
     const tilesIndexes = displayedMap.data;
     mapWidth = tilesIndexes[0].length;
