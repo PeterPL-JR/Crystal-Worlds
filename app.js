@@ -26,10 +26,13 @@ var tilesArray = [];
 
 var displayedMap;
 const tiles = [];
+var player;
+var time = 0;
 
 // TO DELETE!
 const worldName = "earth";
 const mapIndex = 0;
+const characterIndex = 0;
 
 function init() {
     canvas.width = WIDTH;
@@ -44,16 +47,21 @@ function init() {
         tilesObj = data.tiles;
         start();
     });
+    setInterval(function() {
+        time++;
+    }, 10);
 }
 
 function start() {
     initMap(worldName, mapIndex);
     initImages();
+    initPlayer();
 
     draw();
 }
 
 function initImages() {
+    // Init Tiles Images
     for(var tile in tilesObj) {
         const obj = tilesObj[tile];
         tilesArray[obj.index] = obj;
@@ -62,12 +70,25 @@ function initImages() {
         tilesArray[obj.index].image = new ImgAsset(`${_IMAGES_PATH}tiles/${tile}.png`);
         delete tilesArray[obj.index].index;
     }
+    // Init Player Images
+    for(var c = 0; c < _SKINS; c++) {
+        const image = loadImage(`${_IMAGES_PATH}player/player${c}.png`);
+        playersTextures[c] = [];
+
+        for(var dir = 0; dir < _DIRS; dir++) {
+            playersTextures[c][dir] = [];
+
+            for(var moveTex = 0; moveTex < _MOVE_TEXTURES; moveTex++) {
+                const sx = dir * PLAYER_IMAGE_SIZE;
+                const sy = moveTex * PLAYER_IMAGE_SIZE;
+                playersTextures[c][dir][moveTex] = new ImgAsset(image, sx, sy, PLAYER_IMAGE_SIZE, PLAYER_IMAGE_SIZE);
+            }
+        }
+    }
 }
 
 function initMap(worldName, mapIndex) {
     displayedMap = worlds[worldName][mapIndex];
-    playerX = displayedMap.spawn[X] * TILE_SIZE - PLAYER_SIZE / 2;
-    playerY = displayedMap.spawn[Y] * TILE_SIZE - PLAYER_SIZE / 2;
 
     const tilesIndexes = displayedMap.data;
     mapWidth = tilesIndexes[0].length;
@@ -83,12 +104,13 @@ function initMap(worldName, mapIndex) {
 
 function draw() {
     requestAnimationFrame(draw);
-    playerMovement();
+    updatePlayer(player);
 
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
     renderTiles();
+    renderPlayer(player);
 }
 
 function renderTiles() {
@@ -97,4 +119,8 @@ function renderTiles() {
         const renderY = getY(tile.y * TILE_SIZE);
         tilesArray[tile.type].image.draw(ctx, renderX, renderY, TILE_SIZE, TILE_SIZE);
     }
+}
+
+function isDefined(value) {
+    return value != undefined;
 }
