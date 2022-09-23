@@ -45,6 +45,32 @@ function loadImage(path) {
     return img;
 }
 
-function getAnimStage(time, frames, frameTime) {
-    return 0;
+class AnimStage {
+    constructor(minTime, maxTime) {
+        this.minTime = minTime;
+        this.maxTime = maxTime;
+    }
+}
+
+function getStagesArray(frames, frameTime) {
+    const array = [];
+    for(var t = 0; t < frames * frameTime; t += frameTime) {
+        const minTime = t;
+        const maxTime = t + frameTime - 1;
+        array.push(new AnimStage(minTime, maxTime));
+    }
+    return array;
+}
+
+function getAnimStage(time, stagesArray, frameTime) {
+    const stages = stagesArray.length;
+
+    for(var s = 0; s < stages; s++) {
+        const stage = stagesArray[s];
+        const modulo = time % (stages * frameTime);
+
+        if(modulo >= stage.minTime && modulo <= stage.maxTime) {
+            return s;
+        }
+    }
 }

@@ -7,10 +7,11 @@ const DIR_UP = 3;
 const _SKINS = 1;
 const PLAYER_IMAGE_SIZE = 34;
 const PLAYER_SIZE = PLAYER_IMAGE_SIZE * 4;
-const SPEED = 10;
+const SPEED = 11;
 
 const MOVEMENT_FRAMES = 4;
-const MOVEMENT_FRAME_SPEED = 15;
+const MOVEMENT_FRAME_SPEED = 12;
+const movementStages = getStagesArray(MOVEMENT_FRAMES, MOVEMENT_FRAME_SPEED);
 
 const X = 0;
 const Y = 1;
@@ -68,9 +69,13 @@ function updatePlayer(player) {
             const move = allTheRightMoves[key];
             player.x += move[X] * player.speed;
             player.y += move[Y] * player.speed;
-            
             player.direction = dirs[key];
-            player.movementStage = getAnimStage(player.movementTime, MOVEMENT_FRAMES, MOVEMENT_FRAME_SPEED);
+            
+            const stage = getAnimStage(player.movementTime, movementStages, MOVEMENT_FRAME_SPEED);
+            if(stage == 0) player.movementStage = MOVING_1;
+            if(stage == 1) player.movementStage = STANDING;
+            if(stage == 2) player.movementStage = MOVING_2;
+            if(stage == 3) player.movementStage = STANDING;
         }
     }
     if(movement) player.movementTime++;
